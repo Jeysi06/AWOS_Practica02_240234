@@ -1,187 +1,182 @@
-// 4.- STRING (CADENAS DE CARACTERES)
-var fullnameOwner = "Jeysi Damari Lara Cruz"
-let nameProperty = "   Hermosa casa en la Playa de Puerto Vallarta   ";
-let descriptionProperty = "Casa de 2 pisos, 4 habitaciones, 2 baños completos y estacionamiento para 2 automóviles a orilla del mar.";
-var statusProperty = "Disponible";
-const typeProperty = "C";
-var addressProperty;
+// Estilización de la barra de pruebas en el DveTools en el navegador
+console.log("%c Ejercicio 03: Funciones ", style_console);
 
-/* Los tipos de datos STRING son palabras, valores cualitativos de las entidades de nuestra 
-aplicación, que no tienen un tamaño máximo y que están conformadas por carácteres alfabéticos, 
-caracteres especiales como acentos o símbolos de algún idioma*/
+// FUNCIONES NOMBRADAS
+//1. Funciones procedurales, vacias, VOID, sin el valor de retorno y sín parámatreo de entrada
 
-console.warn("4. STRING (CADENA DE CARÁCTERES, PALABRAS)");
-console.log(`El usuario: ${fullnameOwner}, 
-    Esta vendiendo o rentando: ${nameProperty} 
-    Que consiste en: ${descriptionProperty}
-    Actualmente esta en estado: ${statusProperty} y es del tipo: ${typeProperty}`)
+function saludar()
+{
+    console.log("Bienvenido al Sistema de Bienes Raíces");
+}
 
-console.log(`Las variables declaradas son del tipo:
-        fullnameOwner :   ${typeof(fullnameOwner)}
-        nameProperty :   ${typeof(nameProperty)}
-        descriptionProperty:  ${typeof(descriptionProperty)}
-        statusProperty :   ${typeof(statusProperty)}
-        typeProperty :   ${typeof(typeProperty)}`);
+console.log("1. Funciones sin valor de retorno, sin prámetros");
+saludar();
 
-// Manipulando Strings, los tipos de datos cualitativos tienen ciertos métodos para manipular su valor
-// por mencionar algunos:
+//2. Funciones procedurales sin valor de retorno, pero si recibe paámetros es dicir datos de entrada
 
-// Transformar a MAYÚSCULAS
-console.log(`Nombre del Propietario: ${fullnameOwner.toUpperCase()}`);
-// Transformar a minúsculas
-console.log(`Descripción de la Propiedad: ${descriptionProperty.toLocaleLowerCase()}`);
-// Número de Caracteres
-console.log(`Numero de letras en el tipo de Propiedad ${typeProperty.length}`);
-//subcadena 
-console.log(`Nombre del propietario: ${fullnameOwner.slice(14, fullnameOwner.length)}`);
-//Eliminar espacios en blanco 
-console.log(`Nombre de la propiedad: ${nameProperty.trim()}`);
-//Remplazar caracteres 
-console.log(`Descripción modificada: ${descriptionProperty.replace("Mar", "Rio")}`);
-//Remplazar todos los caracteres 
-console.log(`Descripcion modificada: ${descriptionProperty.toLocaleUpperCase().replaceAll("A", "4")}`);
+function saludar_usuario(username, gender)
+{
+    if(gender=="H")
+    console.log(`Bienvenido, ${username} al sistema de Bienes Raíces`)
+    else if(gender=="M")
+    console.log(`Bienvenida, ${username} al sistema de Bienes Raíces`)
+    else
+    console.log(`Bienvenid@, ${username} al sistema de Bienes Raíces`)
+}
 
-// 5. BIGINT (Entero de grandes dimensiones)
-/*Este tipo de dato permite almacenar numeros exajeradamente amplios que usualmente aplicaciones
-cientificas avanzadas requieren, esto para no perder presición en los valores almacenados*/
+console.warn("2. Funciones sin valor de retorno, con parámetros de entrada");
+saludar_usuario("Marco", "H");
+console.log("--------------------------------------------------");
+saludar_usuario("Patricia", "M");
+console.log("--------------------------------------------------");
+saludar_usuario("Guadalupe", null);
+console.log("--------------------------------------------------");
 
-const numeroGrande = 1234567890;
-let numeroGrande2 = 12345678901234567890;
-let numeroGrande3 = 123456789012345678901234567890;
-let numeroGrande4 = 1234567890123456789012345678901234567890;
+//3. Funciones que retornan un dato, pero que no reciben parámetros
 
-console.warn("5. BIGINT (enteros de grandes dimensiones)");
+function fechaActual()
+{
+    const fecha = new Date();
+    const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
-console.log(`El valor del numeroGrande es: ${numeroGrande} y es soportado por : ${typeof(numeroGrande)}`);
+    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-console.log(`El valor del numeroGrande2 es: ${numeroGrande2} a psear de ser soportado 
-por : ${typeof(numeroGrande2)} comienza a tener problemas de presicion`);
+    const fecha_formatoMX = `${dias[fecha.getDay()]}, ${fecha.getDate()} de ${meses[fecha.getMonth()]} de ${fecha.getFullYear()}`;
+
+     return fecha_formatoMX;
+};
+
+console.warn("3. Funciones que retornan un valor, pero no tienen parámetros")
+let hoy = fechaActual();
+console.log(`Bienvenid@ al Sistema de Bienes Raíces, hoy es: ${hoy}`);
+/*Imprimiendo que tipo de dato es:*/
+console.log(fechaActual);
+console.log(typeof(fechaActual));
+
+// 4. Funciones que retornan un valor y que reciiben parámetros de entrada
+
+function login(username, password)
+{
+    let userValidation = false;
+    if(username==="admin" && password==="12345"){
+        userValidation = true;
+        console.log("Bienvenido usuario admin!")
+        }
+    else if(username==="admin" && password!=="12345"){
+        userValidation = false;
+        console.log("Lo sentimos la contraseña es incorrecta.")
+        }
+    else if(username!="admin" && password==="12345"){
+        userValidation = false;
+        console.log("Lo sentimos el nombre de usuario no existe.")
+        }
+    else if (username!="admin" && password!=="12345"){
+        userValidation = false;
+        console.log("Por favor verifica el nombre de usuario y la contraseña")
+        }
+    return userValidation;
+}
+
+console.warn("4. Funciones que retornan un dato, pero también reciben parametros de entrada");
+var loginStatus;
+//Test 1 - Usuario y contraseña correctos
+console.log("Test 1 - usuario: admin, password: 12345")
+loginStatus = login("admin", "12345");
+console.log(`${loginStatus?`El usuario admin se ha logueado satisfactoriamente`:`Hubo un error en el login del usuario admin`}`);
+
+//Test 2 - Usuario y contraseña correctos
+console.log("Test 2 - usuario: administrador, password: 12345")
+loginStatus = login("administrador", "12345");
+console.log(`${loginStatus?`El usuario admin se ha logueado satisfactoriamente`:`Hubo un error en el login del usuario admin`}`);
+
+//Test 3 - Usuario y contraseña correctos
+console.log("Test 3 - usuario: admin, password: 1234567890")
+loginStatus = login("admin", "1234567890");
+console.log(`${loginStatus?`El usuario admin se ha logueado satisfactoriamente`:`Hubo un error en el login del usuario admin`}`);
+
+//Test 4 - Usuario y contraseña correctos
+console.log("Test 4 - usuario: marcor, password: mipassword")
+loginStatus = login("marcor", "mipassword");
+console.log(`${loginStatus?`El usuario admin se ha logueado satisfactoriamente`:`Hubo un error en el login del usuario admin`}`);
+
+// FUNCIONES ANÓNIMAS, FUNCIONES FLECHA (ARROW, FUNCIONES LAMBADA)
+/*A diferencia de las funciones nombradas este tipo de funciones no suelen ser reutilizadas en el código
+solo se ejecutan una sola vez, dando velocidad, individualidad y privacidad a los datos utilizados en el proceso.*/
+
+// 5. Función aninima sin parámetros
+isNewUser = function(){
+    const hoy = new Date();
+
+    return (
+        lastLogin.getFullYear() === hoy.getFullYear() &&
+        lastLogin.getMonth() === hoy.getMonth() &&
+        lastLogin.getDate() === hoy.getDate()
+    );
+};
+
+console.warn("5. Funcines Anonimas, sin parámtros")
+
+console.log("Test 1 - Fecha de ultimo acceso es igual a la fecha de hoy");
+console.log(`La fecha del último acceso es: ${lastLogin}`);
+console.log(`El usuario logeado es: ${isNewUser()?"Nuevo Usuario": "Usuario Antiguo."}`);
+
+console.log("----------------------------------------------------");
+lastLogin = new Date("2025/12/31");
+console.log("Test 2 - Fecha de ultimo acceso es diferente a la fecha de hoy");
+console.log(`La fecha del último acceso es: ${lastLogin}`);
+console.log(`El usuario logeado es: ${isNewUser()?"Nuevo Usuario": "Usuario Antiguo"}`);
+
+//6. Funciones Anónimas con parametros (Version Arrow o Lambda)
+
+    const sumar=(a,b)=>{
+        let resultado=a+b;
+        return resultado;
+    }
+
+    console.warn("6. Funciones Anónimas con Parámetros")
+    console.log(`El resultado de la suma de 15 + 83 es: ${sumar(15,83)}`);
 
 
-//BigInt no pierde presición
-console.log(`El valor del numeroGrande3 es: ${numeroGrande3} ya no es soportado por 
-NUMBER y adquiere un nuev tipo siendo: ${typeof(numeroGrande3)}`);
+    /**
+     * Cuando la funcion anónima tiene  solo ianlínea de operación se puede usar 
+     * una versión simplificada que no usa {} llaves, ni la palabra reservada (return)
+     */
 
-console.log(`El valor del numeroGrande4 es: ${numeroGrande4} y es soportado por : ${typeof(numeroGrande4)}`);
+    const multiplicar=(a,b)=> a*b
+    console.log(`El resultado de la multipilcacion de 15 * 125 es: ${multiplicar(15,125)}`);
 
-numeroGrande2 = BigInt("12345678901234567890");
-console.log(`Si declaramos la variable con el valor de numeroGrande2 es: ${numeroGrande2} un tipo de dato: ${typeof(numeroGrande2)}`);
+    //7. Funciones Callback (Regreso de Llamado)
 
-numeroGrande3 = BigInt("123456789012345678901234567890");
-console.log(`Si declaramos la variable con el valor de numeroGrande3 es: ${numeroGrande3} un tipo de dato: ${typeof(numeroGrande3)}`);
+    console.warn("7. Funciones Anónimas Callback (Respuesta)")
 
-numeroGrande4 = BigInt("1234567890123456789012345678901234567890");
-console.log(`Si declaramos la variable con el valor de numeroGrande4 es: ${numeroGrande4} un tipo de dato: ${typeof(numeroGrande4)}`);
 
-//6. Symbol (simbolo)
+    const recoverPassword= function(email,callback){
+        //Generamos el código a enviar al usuario
+        const recoveryCode=Math.floor(1000000+Math.random()*900000)
 
-/*Es un tipo de dato que ademas de tener un tipo, un valor, asocia la ubicación en el espacio en memoria,
-por lo que todos los valores asignados asignados a este tipo siempre seran unicos.
-*/
+        console.log(`
+=======================================================================
+Solicitud de recuperacion recibida
+Correo del Usuario solicitante: ${email}
+Generando código de recuperación...
+Código de seguridad generado:${recoveryCode}
+Enviando el correo al usuario
+Correo enviado a: ${email}, con el código de seguridad :${recoveryCode}
+=======================================================================`);
+    
 
-console.warn("6. SYMBOL (simbolo)");
+    //Definiendo la respuesta del sistema
 
-const numero1 = 4;
-const numero2= 4.0;
-const numero3 = "4";
-const numero4 = "4.0";
-const numero5 = Symbol(4);
-const numero6 = Symbol(4.0);
-const numero7 = Symbol("4");
-const numero8 = Symbol("4.0");
+    const response={
+        status:"OK",
+        message:"Código de recuperación enviado satisfactoriamente."
+    };
 
-//valores y tipo de datos
-console.log(`Valores y tipos:
-    numero1 - valor: ${numero1}, tipo: ${typeof(numero1)}
-    numero2 - valor: ${numero2}, tipo: ${typeof(numero2)}
-    numero3 - valor: ${numero3}, tipo: ${typeof(numero3)}
-    numero4 - valor: ${numero4}, tipo: ${typeof(numero4)}
-    numero5 - valor: ${numero5.description}, tipo: ${typeof(numero5)}
-    numero6 - valor: ${numero6.description}, tipo: ${typeof(numero6)}
-    numero7 - valor: ${numero7.description}, tipo: ${typeof(numero7)}
-    numero8 - valor: ${numero8.description}, tipo: ${typeof(numero8)}
-    `);
+    callback(response);
+    };
 
-// Pruebas comparativas
- if(numero1 ==numero2)
-    console.log("Las variables numero1 y numero2 son igulaes en valor.")
-else
-
-    console.log("Las variables numero1 y numero2 no son iguales en valor.")
-if(numero1 == numero3)
-    console.log("Las variables numero1 y numero3 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero3 no son iguales en valor.")
-
-if(numero1 == numero4)
-    console.log("Las variables numero1 y numero4 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero4 no son iguales en valor.")
-
-if(numero1 == numero5)
-    console.log("Las variables numero1 y numero5 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero5 no son iguales en valor.")
-
-if(numero5 == numero6)
-    console.log("Las variables numero5 y numero6 son igulaes en valor.")
-else
-    console.log("Las variables numero5 y numero6 no son iguales en valor.")
-
-if(numero1 ==numero2)
-    console.log("Las variables numero1 y numero2 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero2 no son iguales en valor.")
-
-if(numero1 == numero3)
-    console.log("Las variables numero1 y numero3 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero3 no son iguales en valor.")
-
-if(numero1 == numero4)
-    console.log("Las variables numero1 y numero4 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero4 no son iguales en valor.")
-
-if(numero1 == numero5)
-    console.log("Las variables numero1 y numero5 son igulaes en valor.")
-else
-    console.log("Las variables numero1 y numero5 no son iguales en valor.")
-
-if(numero5 == numero6)
-    console.log("Las variables numero5 y numero6 son igulaes en valor.")
-else
-    console.log("Las variables numero5 y numero6 no son iguales en valor.")
-
-//7. NULL (Nulo)
-/* El tipode dato nulo es similar a UNDFINED, con la variación de que hay un consentimiento del usuario
-o del sistema a que esta variable intencionalmente fue iniciada con este valor*/
-
-var isPremiemUser;
-var isNewUser;
-let todayDate = new Date();
-var lastLogin = todayDate;
-
-console.warn("7. NULL (Nulo)");
-console.log(`
-    El usuario: ${usuarioLogeado}, tipo de dato: ${typeof(usuarioLogeado)}
-    Fecha ultimo login: ${todayDate}, tipo de dato: ${typeof(todayDate)}
-    Es nuevo usuario: ${isNewUser}, tipo de dato: ${typeof(isNewUser)}
-    Es usuario premium: ${isPremiemUser}, tipo de dato: ${typeof(isPremiemUser)}`);
-
-// Validación del usuario
-
-if(todayDate == lastLogin)
-    isNewUser = true;
-else
-    isNewUser = false;
-
-// Cómo es un usuario nuevo aun no ve, ni publica ninguna propiedad por defecto no interesa por el
-// momento que sea premium hasta que interactue con la plataforma.
-isPremiemUser = null;
-console.log("Datos despues de la validaación de los datos del usuario: ")
-console.log(`
-    El usuario: ${usuarioLogeado}, tipo de dato: ${typeof(usuarioLogeado)}
-    Fecha ultimo login: ${todayDate}, tipo de dato: ${typeof(todayDate)}
-    Es nuevo usuario: ${isNewUser}, tipo de dato: ${typeof(isNewUser)}
-    Es usuario premium: ${isPremiemUser}, tipo de dato: ${typeof(isPremiemUser)}`);
+    //Invocación de una función callback 
+    recoverPassword("yazmin@gmail.com", function(systemResponse){
+        console.log("Respuesta del sitema")
+        console.log(systemResponse.message);
+    });
