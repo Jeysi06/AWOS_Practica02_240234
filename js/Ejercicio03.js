@@ -176,7 +176,7 @@ Correo enviado a: ${email}, con el código de seguridad :${recoveryCode}
     };
 
     //Invocación de una función callback 
-    recoverPassword("yazmin@gmail.com", function(systemResponse){
+    recoverPassword("damari@gmail.com", function(systemResponse){
         console.log("Respuesta del sitema")
         console.log(systemResponse.message);
     });

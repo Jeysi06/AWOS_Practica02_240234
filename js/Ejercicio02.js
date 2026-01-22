@@ -27,7 +27,7 @@ console.log(`ultimoAcceso: ${typeof(ultimoAcceso)}`);
 
 // Supongamos que un usuario denominado MarcoRamirez99 se ha logueado exitosamente, el valor de la variable debera actualizarse a su username
 
-usuarioLogeado = "YazminEsquivel08";
+usuarioLogeado = "JeysiDamari15";
 
 // Pero no solo cambiará su valor, también cambiará su tipo
 
@@ -99,7 +99,7 @@ console.log(`Los tipos de datos de las variables declaradas para los datos de la
 
 
 // 4.- STRING (CADENAS DE CARACTERES)
-var fullnameOwner = "Yazmin Ariana Esquivel Marquez"
+var fullnameOwner = "Jeysi Damari Lara Cruz"
 let nameProperty = "   Hermosa casa en la Playa de Puerto Vallarta   ";
 let descriptionProperty = "Casa de 2 pisos, 4 habitaciones, 2 baños completos y estacionamiento para 2 automóviles a orilla del mar.";
 var statusProperty = "Disponible";
